@@ -1,25 +1,25 @@
-name-template: "Release v$NEXT_PATCH_VERSION"
-tag-template: "v$NEXT_PATCH_VERSION"
+name-template: "Release v$NEXT_VERSION"
+tag-template: "v$NEXT_VERSION"
 
-# Obligatorio: define cómo se verá el draft release
+# Plantilla del draft release: filtra solo por labels
 template: |
   ## 🚀 Features
-  $CHANGES{type=feat}
+  $CHANGES{label=feature}
 
   ## 🐛 Bug Fixes
-  $CHANGES{type=fix}
+  $CHANGES{label=bug}
 
   ## 📝 Documentation
-  $CHANGES{type=docs}
+  $CHANGES{label=docs}
 
-# Categorías para clasificar los cambios según labels
+# Categorías opcionales para organizar PRs
 categories:
   - title: "🚀 Features"
-    labels: ["feature", "feat"]
+    labels: ["feature"]
   - title: "🐛 Bug Fixes"
-    labels: ["bug", "fix"]
+    labels: ["bug"]
   - title: "📝 Documentation"
     labels: ["docs"]
 
-# Plantilla de cada línea de cambio
+# Cómo se ve cada línea del changelog
 change-template: "- $TITLE (#$NUMBER) @$AUTHOR"
