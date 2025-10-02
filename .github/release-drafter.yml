@@ -1,5 +1,18 @@
 name-template: "Release v$NEXT_PATCH_VERSION"
 tag-template: "v$NEXT_PATCH_VERSION"
+
+# Obligatorio: define cómo se verá el draft release
+template: |
+  ## 🚀 Features
+  $CHANGES{type=feat}
+
+  ## 🐛 Bug Fixes
+  $CHANGES{type=fix}
+
+  ## 📝 Documentation
+  $CHANGES{type=docs}
+
+# Categorías para clasificar los cambios según labels
 categories:
   - title: "🚀 Features"
     labels: ["feature", "feat"]
@@ -7,4 +20,6 @@ categories:
     labels: ["bug", "fix"]
   - title: "📝 Documentation"
     labels: ["docs"]
+
+# Plantilla de cada línea de cambio
 change-template: "- $TITLE (#$NUMBER) @$AUTHOR"
