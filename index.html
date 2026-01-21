@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a los 80s</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #000428 0%, #004e92 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Efecto de líneas de escaneo retro */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Grid retro de fondo */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 0, 255, 0.2) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 0, 255, 0.2) 2px, transparent 2px);
+            background-size: 50px 50px;
+            perspective: 500px;
+            transform-style: preserve-3d;
+            animation: gridMove 10s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 50px;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 3px solid #ff00ff;
+            box-shadow: 
+                0 0 20px #ff00ff,
+                inset 0 0 20px rgba(255, 0, 255, 0.3);
+            margin-bottom: 40px;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from {
+                box-shadow: 
+                    0 0 20px #ff00ff,
+                    inset 0 0 20px rgba(255, 0, 255, 0.3);
+            }
+            to {
+                box-shadow: 
+                    0 0 40px #ff00ff,
+                    0 0 60px #ff00ff,
+                    inset 0 0 30px rgba(255, 0, 255, 0.5);
+            }
+        }
+
+        h1 {
+            font-size: 4em;
+            text-shadow: 
+                0 0 10px #ff00ff,
+                0 0 20px #ff00ff,
+                0 0 30px #ff00ff,
+                0 0 40px #00ffff,
+                0 0 70px #00ffff;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            animation: glitch 5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 96%, 100% {
+                text-shadow: 
+                    0 0 10px #ff00ff,
+                    0 0 20px #ff00ff,
+                    0 0 30px #ff00ff,
+                    0 0 40px #00ffff;
+            }
+            97% {
+                text-shadow: 
+                    2px 0 0 #ff00ff,
+                    -2px 0 0 #00ffff;
+            }
+            98% {
+                text-shadow: 
+                    -2px 0 0 #ff00ff,
+                    2px 0 0 #00ffff;
+            }
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            letter-spacing: 3px;
+        }
+
+        /* Secciones principales */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.2));
+            border: 2px solid #00ffff;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                top: -50%;
+                left: -50%;
+            }
+            100% {
+                top: 150%;
+                left: 150%;
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.8),
+                0 0 50px rgba(255, 0, 255, 0.5);
+            border-color: #ff00ff;
+        }
+
+        .feature-card h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #ffff00;
+            text-shadow: 0 0 10px #ffff00;
+        }
+
+        .feature-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        /* Botón retro */
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #000;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 
+                0 0 20px #ff00ff,
+                0 0 40px #00ffff;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 
+                0 0 30px #ff00ff,
+                0 0 60px #00ffff,
+                0 0 90px #ffff00;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-top: 3px solid #ffff00;
+            border-bottom: 3px solid #ffff00;
+            box-shadow: 
+                0 0 30px rgba(255, 255, 0, 0.5),
+                inset 0 0 30px rgba(255, 255, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 2px solid #ff00ff;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        /* Elementos decorativos */
+        .retro-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px #ff00ff);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .tagline {
+                font-size: 1.2em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <div class="container">
+        <header>
+            <h1>⚡ RETRO 80s ⚡</h1>
+            <p class="tagline">~ Viaja al Futuro del Pasado ~</p>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="retro-icon">🎮</div>
+                <h3>Arcade</h3>
+                <p>Revive la edad dorada de los videojuegos con gráficos pixelados y sonidos 8-bit que te transportarán a las salas arcade.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="retro-icon">📼</div>
+                <h3>VHS Style</h3>
+                <p>Estética vintage con líneas de escaneo, distorsión y ese encanto nostálgico de las cintas VHS que tanto amábamos.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="retro-icon">🎵</div>
+                <h3>Synthwave</h3>
+                <p>Sumérgete en los ritmos electrónicos y los sintetizadores que definieron la música de una generación entera.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="retro-icon">🌆</div>
+                <h3>Neon City</h3>
+                <p>Luces de neón brillantes, colores vibrantes y ese ambiente futurista que soñábamos en los años 80.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="retro-icon">💾</div>
+                <h3>Tech Retro</h3>
+                <p>De diskettes a computadoras gigantes, la tecnología que marcó el inicio de la era digital moderna.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="retro-icon">🕹️</div>
+                <h3>Pixel Art</h3>
+                <p>Arte pixelado y diseños geométricos que se convirtieron en íconos de la cultura visual ochentera.</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 style="font-size: 2.5em; margin-bottom: 30px; color: #ffff00; text-shadow: 0 0 20px #ffff00;">
+                ¿Listo para el Viaje?
+            </h2>
+            <button class="cta-button">¡Empezar Ahora!</button>
+        </section>
+
+        <footer>
+            <p>© 2026 RETRO 80s • Hecho con 💜 y nostalgia</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #ff00ff;">
+                "El futuro que imaginábamos en el pasado"
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Efecto de clic en el botón
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('¡Bienvenido a los 80s! 🎉');
+        });
+
+        // Efecto de paralaje simple en el grid
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.querySelector('.grid-background').style.transform = 
+                `perspective(500px) rotateX(${y * 10 - 5}deg) rotateY(${x * 10 - 5}deg)`;
+        });
+    </script>
+</body>
+</html>
